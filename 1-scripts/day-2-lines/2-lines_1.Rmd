@@ -1,0 +1,133 @@
+---
+title: "2-lnes"
+author: "Antonio Alegría"
+date: "12/1/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+pacman::p_load(sf,
+               ggspatial,
+               tidyr,
+               dplyr,
+               lubridate,
+               ggplot2,
+               scales,
+               patchwork
+               )
+
+# Dataset
+# SHP
+# Source: https://www.geogpsperu.com/2018/07/mapa-de-las-lineas-de-nazca-ministerio.html
+# https://drive.google.com/drive/folders/1m_6pCh2EIsf0Vu08Cox0D_00g9rMMMNh
+
+data_sf_3 <-  sf::st_read("geoglifos/geoglifos.shp")
+
+
+data_named <- data_sf_3 %>% 
+  mutate(name_geoglyph = case_when(OBJECTID %in% c(1,2) ~ "El Colibrí",
+                                   OBJECTID %in% c(3,4,5,6) ~ "BUSCARNOMBRE",
+                                   OBJECTID == 7 ~ "El Mono",
+                                   OBJECTID == 8 ~ "La Araña",
+                                   OBJECTID %in% c(9,10,11) ~ "La Espiral",
+                                   OBJECTID %in% c(12,13,14,15,16) ~ "La Flor",
+                                   OBJECTID %in% c(17,18,19) ~ "El Árbol",
+                                   OBJECTID %in% c(22,23) ~ "Las Manos",
+                                   OBJECTID %in% c(20,21,55,56,57,58,59,60,61,62) ~ "El Lagarto/Not complete",
+                                   OBJECTID %in% c(24,25,26,27) ~ "El Flamingo /Not Complete",
+                                   OBJECTID %in% c(28,29,30,31,32,33,34,35,37,38) ~ "El Pelícano",
+                                   OBJECTID %in% c(39,40,41,42) ~ "El Loro",
+                                   OBJECTID == 63 ~ "El Pulpo",
+                                   OBJECTID == 65 ~ "El Condor",
+                                   OBJECTID == 75 ~ "El Pulpo Duplicate",
+                                   OBJECTID == 77 ~ "El Condor Duplicate",
+                                   OBJECTID %in% c(78,79,80,81) ~ "El Perro",
+                                   OBJECTID %in% c(66,67,68,69) ~ "El Perro Duplicate",
+                                   TRUE ~ 'NOTNAMED'))
+
+```
+
+## Plot geoglyphs. Nicely
+
+```{r plots-geoglyphs, echo=FALSE}
+
+# Filter the name you want to map
+data_plot_1 <- data_named %>%
+  filter(name_geoglyph == "El Colibrí") %>% 
+  st_transform(crs = 3857)
+
+
+  
+plot_geoglyph_colibri <- data_plot_1 %>% 
+   ggplot()+
+ annotation_map_tile(type = "osm",zoomin = 0) +
+   geom_sf(color = "grey50")+
+   geom_sf(data = st_buffer(st_centroid(st_union(data_plot_1)), 60),
+           color = "grey50", fill = NA)+
+  annotation_scale(location = "tr",height = unit(0.15, "cm"),
+                   bar_cols = c("grey", "white"), 
+                   line_col = "#444444",
+                   text_col = "#444444") +
+  annotation_north_arrow(location = "tl",
+                         # Use true north
+                         height = unit(0.75, "cm"),
+                         width = unit(0.75, "cm"),
+                         style =  north_arrow_minimal(line_width = .5,
+                                                      line_col = "#444444",
+                                                      fill = "#444444",
+                                                      text_col = "#444444",
+                                                      text_family = "",
+                                                      text_face = "plain",
+                                                      text_size = 10)
+                          )+
+  theme_void(base_size = 15, base_family = "Copperplate Light")+
+  labs(title = "NAZCA LINES: \nEl Colibrí",
+       subtitle = "The Nazca Lines are a group of geoglyphs made in the soil of the Nazca Desert in southern Perú. \nThey were created between 500 BCE and 500 CE  by people making depressions or shallow incisions \nin the desert floor, removing pebbles and leaving differently colored dirt exposed. There are two \nmajor phases of the Nazca lines, Paracas phase, from 400 to 200 BCE, and Nazca phase, from 200 BCE \nto 500 CE. In the years leading up to 2020, between 80 and 100 new figures had been found with the \nuse of drones, and archaeologists believe that there are more to be found.")+
+     #  caption = "Source: www.geogpsperu.com
+    #   DataViz: antonioalegria.io")+
+  theme(plot.title.position = "plot",
+        plot.title = element_text(face = "bold", size = 40
+                                  ),
+        plot.subtitle = element_text(size = 10, 
+                                     margin = margin(t = 20, b = 20),
+                                     family = "Avenir"),
+        plot.caption = element_text(size = 9),
+        text = element_text(color = "#333333"), 
+        plot.margin = margin(2,1.5,0,1, "cm"))
+
+
+
+# Context: other geoglyphs
+
+plot_geoglyph_all <- data_named %>% 
+   ggplot()+
+   annotation_map_tile(type = "stamenwatercolor",zoomin = 0) +
+   geom_sf(color = "grey20", alpha = .5)+
+   theme_void(base_size = 15, base_family = "Avenir")+
+   labs(title = "",
+       subtitle = "Some Other Geoglyphs",
+       caption = "SHP Data: www.geogpsperu.com | #30DayMapChallenge
+       DataViz: antonioalegria.io | Twitter: @elmedicobrujo")+
+  theme(plot.title.position = "plot",
+        plot.title = element_text(face = "bold", size = 40),
+        plot.subtitle = element_text(size = 10, margin = margin(t = 20, b = 20)),
+        plot.caption = element_text(size = 9),
+        text = element_text(color = "grey10"), 
+        plot.margin = margin(0,1,1,1, "cm"))
+ 
+ 
+ 
+
+
+```
+
+## Plots.... Assemble
+
+```{r plots-assemble, fig.height=15 , fig.width=10, cache=TRUE}
+plot_geoglyph_colibri/plot_geoglyph_all&
+  theme(plot.background = element_rect(fill = "#f2efea", colour = "grey90"))
+
+```
+
+
