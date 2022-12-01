@@ -1,6 +1,6 @@
 # 30-day-map
 
-![](resources/#30DayMapChallenge.png)
+![](resources/#30DayMapChallenge.png "banner")
 
 # 
 
@@ -10,4 +10,4 @@ Be careful when running my scripts. Some of them take a little time and others d
 
 ## Day one: Points
 
-![](1-scripts/day-1-points/plot-assemble-1.png "NYC Trees")
+[![](1-scripts/day-1-points/plot-assemble-1.png "NYC Trees")](https://github.com/AntonioAlegriaH/30-day-map/blob/main/1-scripts/day-1-points/1-points_1.Rmd)
