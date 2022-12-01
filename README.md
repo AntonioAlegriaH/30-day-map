@@ -36,14 +36,14 @@ If you increase the alpha value it may be a useful map. Or click here to see my 
 
 ## Day 16: Minimal
 
-![](1-scripts/day-16-minimal/dc_metro_5.png "DC Metro Lines")
+[![](1-scripts/day-16-minimal/dc_metro_5.png "DC Metro Lines")](https://github.com/AntonioAlegriaH/30-day-map/blob/main/1-scripts/day-16-minimal/washigton_metro_lines.R)
 
 ## Day 18: Blue 
 
 Tip: I recommend using jobs for nyc street data.
 
-![](1-scripts/day-18-blue/blue-sea-level_final.png "NYC Sea level")
+[![](1-scripts/day-18-blue/blue-sea-level_final.png "NYC Sea level")](https://github.com/AntonioAlegriaH/30-day-map/blob/main/1-scripts/day-18-blue/2-blue-nyc.R)
 
 ## Day 23: Movement
 
-![](1-scripts/day-23-movement/day23-movement.gif "CDMX Metro")
+[![](1-scripts/day-23-movement/day23-movement.gif "CDMX Metro")](https://github.com/AntonioAlegriaH/30-day-map/blob/main/1-scripts/day-23-movement/1-movement.R)
