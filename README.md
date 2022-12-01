@@ -18,13 +18,13 @@ Be careful when running my scripts. Some of them take a little time and others d
 
 ## Day 4: Green
 
-![](1-scripts/day-4-green/test_2.png "Argentinian Yerba Mate")
+[![](1-scripts/day-4-green/test_2.png "Argentinian Yerba Mate")](https://github.com/AntonioAlegriaH/30-day-map/blob/main/1-scripts/day-4-green/4-green.Rmd)
 
 ## Day 7: Raster
 
 Careful when ploting with this one. It's a bit heavy.
 
-![](1-scripts/day-7-raster/test_raw_final.png "World ocean bottom")
+[![](1-scripts/day-7-raster/test_raw_final.png "World ocean bottom")](https://github.com/AntonioAlegriaH/30-day-map/blob/main/1-scripts/day-7-raster/1-raster.Rmd)
 
 ## Day 10: Bad Map
 
@@ -32,4 +32,4 @@ If you increase the alpha value it may be a useful map. Or click here to see my 
 
 [American Migration Patterns During Covid19](https://antonioalegria.io/posts/2022/08/american-migration-during-covid19/)
 
-![](1-scripts/day-10-bad-map/day10-badmap.png "American migration patterns")
+[![](1-scripts/day-10-bad-map/day10-badmap.png "American migration patterns")](https://github.com/AntonioAlegriaH/30-day-map/blob/main/1-scripts/day-10-bad-map/1-day10%20bad%20map.Rmd)
