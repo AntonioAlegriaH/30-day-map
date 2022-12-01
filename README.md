@@ -50,16 +50,20 @@ Tip: I recommend using jobs for nyc street data.
 
 ## Day 25: Two Colors
 
-![](1-scripts/day-25-two-colors/Edinburgh-cycle.png "Edinburgh cycle network")
+Of all my map-children, this is by far my favorite one!
+
+[![](1-scripts/day-25-two-colors/Edinburgh-cycle.png "Edinburgh cycle network")](https://github.com/AntonioAlegriaH/30-day-map/blob/main/1-scripts/day-25-two-colors/1-two-colors.R)
 
 ## Day 29: Out of My Comfort Zone
 
-Annotations where not made in R xd
+Annotations where not made in R xd.
 
-![](1-scripts/day-29-Out/day29-out.png "Barcelona rayshader")
+[![](1-scripts/day-29-Out/day29-out.png "Barcelona rayshader")](https://github.com/AntonioAlegriaH/30-day-map/blob/main/1-scripts/day-29-Out/1-Out.R)
 
 ## Day 30: Remix
 
 Same here: Annotations where not made in R.
 
-![](1-scripts/day-31-remix/day30-remix.png "Germany population density")
+Remix is based on [How wet is it really?](https://twitter.com/JessWhoMaps/status/1589564901412196354?s=20&t=9kxCjyF32gK32yGvEvG4dw)) from [JessWhoMaps](https://twitter.com/JessWhoMaps)
+
+[![](1-scripts/day-31-remix/day30-remix.png "Germany population density")](https://github.com/AntonioAlegriaH/30-day-map/blob/main/1-scripts/day-31-remix/1-remix.R)
