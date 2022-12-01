@@ -1,0 +1,77 @@
+---
+title: "7-raster"
+author: "Antonio Alegría"
+date: "10/28/2022"
+output: html_document
+---
+
+
+
+```{r set-up, include=FALSE}
+
+ pacman::p_load(dplyr,
+                tidyr,
+                raster,
+                ggplot2,
+                tiff,
+                scales,
+                magick,
+                rasterVis,
+                showtext)
+                
+  d_raster_50 <- "resources/OB_50M/OB_50M.tif"
+  
+  raster_1 <- raster(d_raster_50)
+   data_raster_df <- raster::as.data.frame(raster_1, xy=TRUE)  
+
+   d_raster_10 <- "resources/OB_LR/OB_LR.tif"
+  
+  raster_2 <- raster(d_raster_10)
+   
+  data_raster_df <- raster::as.data.frame(raster_2, xy=TRUE) 
+   
+# Test this before trying a complete dataset
+  #gplot(raster_1, maxpixels = 50000)+
+  #   geom_raster(aes(fill  = value), 
+  #             show.legend = FALSE, alpha = 0.7) 
+   
+   
+map_raster_ocean <- 
+  ggplot() +
+ geom_raster(data = data_raster_df , 
+                aes(x = x, y = y, fill = layer),
+             show.legend = FALSE, alpha = 0.7)+  
+    theme_void(base_family = "Century Gothic")+
+    coord_quickmap()+
+    labs(title = "WaterWorld: Ocean Bottom",
+          subtitle= " 1:10m blended depth colors and relief shading of the ocean bottom derived from CleanTOPO2 data. \nThe ocean color extends beneath land areas as a flat tint—mask it with the 10m Natural Earth vector shoreline",
+        caption = "Data: naturalearthdata.com | #30DayMapChallenge
+        DataViz: antonioalegria.io | tw: @elmedicobrujo"
+          )+
+    theme(plot.title.position = "panel",
+          plot.title = element_text(face = "bold",
+                                    size=65, hjust =.5),
+          plot.subtitle = element_text(size = 13,
+                                       hjust = .5,
+                                       family = "Century Schoolbook"),
+          plot.margin = margin(1,1,1,1, "cm"),
+          legend.position = "top",
+          legend.key.height = unit(.2, "cm"),
+          legend.key.width = unit(4, "cm"),
+          legend.margin = margin(1,1,1,1, "cm"),
+          text = element_text(colour = "#444444"))
+  
+ # It takes a while. Be patient 
+  ggsave("test_raw_final_1.png",
+        plot = map_raster_ocean,
+         width = 12,
+         height = 8,
+         units = "cm",
+         scale = 3,
+         bg = "#EBEBEB"
+         )
+
+ 
+
+```
+

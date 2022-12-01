@@ -1,0 +1,142 @@
+---
+title: 'Day 10: Bad Map'
+author: "Antonio Alegría"
+date: "11/10/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+
+pacman::p_load(dplyr,
+               sf,
+               ggplot2,
+               magrittr,
+               readxl,
+               stringr,
+               maps,
+               mapproj,
+               forcats,
+               tools,
+               patchwork
+                 )
+
+```
+
+
+Data:  https://www.census.gov/data/tables/time-series/demo/popest/2020s-total-cities-and-towns.html
+
+
+**Annual Estimates of the Resident Population for Incorporated Places in the United States: April 1, 2020 to July 1, 2021**
+
+**Source: U.S. Census Bureau**
+**Release Date: May 2022**
+
+
+
+```{r}
+  data <-  readxl::read_xlsx("data/SUB-IP-EST2021-POP.xlsx")
+  data_cleannames <- data %>% 
+    rename(geographic_area = "table with row headers in column A and column headers in rows 3 through 4 (leading dots indicate sub-parts)",
+           estimate_base_april_2020 = "...2",
+           population_estimate_july_2020 = "...3",
+           population_estimate_july_2021 = "...4") %>% 
+    slice(4:n()) %>% 
+    mutate(population_estimate_july_2020=as.numeric(population_estimate_july_2020))
+  
+  data_cleannames[ , 5:6] <- str_split_fixed(data_cleannames$geographic_area, 
+                                      pattern = ",",
+                                      n = 2)  
+  
+# Separate State from town and cities. Because some genius put them togheter
+  
+  data_ready <- data_cleannames %>% 
+    rename(city_town = "V1",
+           state = "V2")%>% 
+    select(!(geographic_area:estimate_base_april_2020)) %>% 
+    select(state, city_town, everything()) %>% 
+    slice(1:19494)
+    
+  data_ready$state <- 
+    str_trim(data_ready$state)
+  
+  
+# Percent change
+  
+  data_perc_change <- data_ready %>% 
+    mutate(perc_change = ((population_estimate_july_2021-population_estimate_july_2020)/population_estimate_july_2020*100)
+           ) 
+  data_perc_change$perc_change <- round(data_perc_change$perc_change, 1)
+  
+#  From {map} extract polygons 
+  us_states <- map_data("state")
+  
+# grouped data
+  data_states_perc_change <- data_perc_change %>% 
+    group_by(state) %>% 
+    summarise(sum_total_2020 = sum(population_estimate_july_2020),
+              sum_total_2021 = sum(population_estimate_july_2021)) %>% 
+    mutate(perc_change = ((sum_total_2021-sum_total_2020)/sum_total_2020*100)
+           ) 
+  
+  data_states_perc_change$perc_change <- round(data_states_perc_change$perc_change, 1)
+  data_states_perc_change$state <- tolower(data_states_perc_change$state)
+  
+# Left Join from two datasets
+  data_states_perc_change_joined <- us_states %>% 
+    left_join(data_states_perc_change, by=c("region"="state")) 
+  
+  
+# Maping
+  
+  map_perc_change <- data_states_perc_change_joined %>%
+    ggplot(aes(x=long,y=lat,group=group, fill=perc_change)) +
+    geom_polygon(color = "gray50", size = 0.1, alpha = 0.01) + #Increase this if you really want to see helpfull results xd
+    coord_map(projection = "albers", lat0 = 45, lat1 = 55) +
+    scale_fill_gradient2(low = "#1d3557", high = "#e63946", mid = "white",
+                          name = "Percent Change in Population by State:",
+                          labels = scales::percent_format(scale = 1))+
+    labs(title = "Day 10 - Bad Map: \nHow is Population Shifting in Your State?",
+         subtitle = "Choropleth map with alpha value below 0.01",
+         caption = "Data: census.gov & {maps} | #30DayMapChallenge
+         DataViz: antonioalegria.io | Tw: @elmedicobrujo")+
+     theme(plot.title.position = "plot",
+           plot.title = element_text(size = 30, 
+                                     hjust = 0, family = "Highway Gothic"
+                                     ),
+           plot.subtitle = element_text(margin = margin(0.2,0,0,0, "cm"),
+                                        size = 12
+                                        ),
+           plot.caption = element_text(size = 10, margin = margin(1,0,0,0, "cm")),
+           axis.line=element_blank(),
+           axis.text=element_blank(),
+           axis.ticks=element_blank(),
+           axis.title=element_blank(),
+           panel.background=element_blank(),
+           panel.border=element_blank(),
+           panel.grid=element_blank(),
+           legend.position="top",
+           legend.title = element_text(size = 11),
+           legend.text = element_text(size = 10),
+           legend.key.height = unit(.5, "lines"),
+           legend.key.width = unit(4, "lines"),
+           legend.margin = margin(1,0,0,0, "cm"),
+           text = element_text(family = "Roboto Light", 
+                               size = 15, colour = "#333333"),
+           plot.margin = margin(.5,1,1,1,"cm"))+
+     guides(fill = guide_colorsteps(title.position = "top",
+                                    title.hjust = .5, label.hjust = .5))
+
+   map_perc_change  
+   
+   
+   ggsave("day10-badmap.png",
+          plot = map_perc_change,
+          width = 10, 
+          height = 10,
+          dpi = 300,
+          bg = "#303030",
+          scale = 2,units = "cm")
+   
+```
+
