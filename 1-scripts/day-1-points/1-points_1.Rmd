@@ -1,0 +1,181 @@
+---
+title: "1-points"
+author: "Antonio Alegría"
+date: "12/1/2022"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+pacman::p_load(sf,
+               ggspatial,
+               tidyr,
+               dplyr,
+               lubridate,
+               ggplot2,
+               forcats,
+               scales,
+               patchwork
+)
+
+# https://coolors.co/palette/dd9787-6d545d-343a1a-8b9556-abb557-bed558-9fd356-63d471-63a46c-95a78d
+# DATASET: #https://data.cityofnewyork.us/Environment/2015-Street-Tree-Census-Tree-Data/pi5s-9p35
+# https://data.cityofnewyork.us/Environment/1995-Street-Tree-Census/7gmq-dbas
+
+# NYC trees data
+  data_trees_complete <- sf::read_sf("resources/2015_Street_Tree_Census_-_Tree_Data.csv")
+  data_trees_sf <- sf::st_as_sf(data_trees_complete, coords = c("longitude","latitude"))
+  st_crs(data_trees_sf) <- 4326
+  data_trees_sf <- st_transform(data_trees_sf, crs = 3857)  
+
+# NYC BORO CODE
+nyc_boro_shp <- sf::read_sf("resources/Borough Boundaries/geo_export_29807758-f1bd-4e37-b856-cb4e361914a9.shp")
+
+st_crs(nyc_boro_shp) <- 4326
+
+data_nyc_sf <- st_transform(nyc_boro_shp, crs = 3857)
+data_nyc_sf_simp <- rmapshaper::ms_simplify(data_nyc_sf,keep = 0.05)
+
+```
+
+## plot trees map
+
+
+```{r trees, echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE}
+# Centroid 
+  nyc_borough_centroid <- cbind(data_nyc_sf_simp, 
+                                st_coordinates(st_centroid(data_nyc_sf_simp)))
+  
+  
+  plot_map <- ggplot()+
+    geom_sf(data = data_nyc_sf_simp, 
+            fill = "grey97", 
+            color = "grey80", size = .3
+    )+
+    geom_sf(data= data_trees_sf, color = "#63A46C", 
+            show.legend = FALSE,
+            alpha = 0.01, # 0.007
+            size = 0.000000000001)+ # 0.007
+    #  geom_sf(data = st_buffer(st_centroid(st_union(data_trees_sf)), 47000),
+    #         color = "#264653", fill = NA)+
+    geom_text(data = nyc_borough_centroid, 
+              aes(X, Y, label = boro_name),
+              check_overlap = TRUE,
+              colour = "grey30",
+              vjust = -1
+    )+
+    annotate(geom = "text",
+             x = -8263981, y = 4979563, 
+             label = "683,788 street trees.\nEach point represents a tree.",
+             color = "grey60", 
+             fontface ="bold",
+             family = "Avenir",
+             size = 4
+    )+
+    coord_sf(xlim =c(-8277901,-8199999) ,ylim =c(4922454,5000454) ,clip = "off", expand = FALSE)+
+    annotation_scale(location = "tr",height = unit(0.15, "cm"),
+                     bar_cols = c("grey", "white"), 
+                     line_col = "#444444",
+                     text_col = "#444444") +
+    annotation_north_arrow(location = "tl",
+                           # Use true north
+                           height = unit(0.75, "cm"),
+                           width = unit(0.75, "cm"),
+                           style =  north_arrow_minimal(line_width = .5,
+                                                        line_col = "#444444",
+                                                        fill = "#444444",
+                                                        text_col = "#444444",
+                                                        text_family = "",
+                                                        text_face = "plain",
+                                                        text_size = 10)
+    )+
+    #  scale_color_manual(name = "",values = c("#8B9556", 
+    #                                          "#BED558", 
+    #                                          "#ABB557",
+    #                                          "#63D471",
+    #                                          "#63A46C"),
+    #                    labels = c("Queens", 
+    #                               "Brooklyn", 
+    #                               "Manhattan",
+    #                               "Staten Island",
+    #                               "Bronx"))+
+    labs(title = "Day1: Points | NYC Street Tree Tree Census",
+         subtitle = "Street tree data from the TreesCount! 2015 Street Tree Census, conducted by volunteers and \nstaff organized by NYC Parks & Recreation and partner organizations. Tree data collected \nincludes tree species, diameter and perception of health. Accompanying blockface data is \navailable indicating status of data collection and data release citywid")+
+    theme_void(base_size = 15, base_family = "Avenir")+
+    theme(plot.title = element_text(color = "#264653", face = "bold",
+                                    size = 19.9,margin=margin(t = 5, b=10)
+    ),
+    plot.title.position = "plot",
+    plot.subtitle = element_text(color = "#264653", face = "plain",
+                                 size = 10, margin=margin(b=30)),
+    plot.caption = element_text(colour = "#264653", size = 9),
+    legend.position = c(.16, .7),
+    legend.title = element_blank(),
+    legend.key.size = unit(.6, "cm"),
+    legend.text = element_text(colour = "#264653",size = 10,face = "bold"),
+    legend.background = element_rect(fill = NA,colour = NA),
+    legend.justification = "left",
+    legend.spacing.y = unit(-1, "cm"),
+    plot.margin = margin(2,1,10,1, "cm")
+    )
+  
+  
+  plot_map
+```
+
+## plot sepecies
+
+
+```{r species, echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE }
+
+# barplot
+  
+  plot_spc_common <- data_trees_sf %>% 
+    select(spc_common) %>% 
+    count(spc_common, sort = T) %>% 
+    drop_na() %>% 
+    slice_max(order_by = n, n = 25) %>% 
+    ggplot(aes(fct_reorder(spc_common,n), n))+
+    geom_col(fill = "#343A1A")+
+    geom_text(aes(label = scales::comma(n)), nudge_y = 5000, 
+              color = "grey50", size = 1.2 )+
+    labs(title = "",
+         subtitle = "Top 25 Tree Species By Common Name",
+         caption = "Source: data.cityofnewyork.us | #30DayMapChallenge
+       DataViz: antonioalegria.io | Twitter: @elmedicobrujo",
+       x = "",
+       y = "")+
+    theme_minimal(base_family = "Avenir Light")+
+    theme(plot.title = element_blank(),
+          plot.title.position = "panel",
+          plot.subtitle = element_text(color = "#264653", face = "plain",
+                                       size = 10, margin=margin(b=-30)),
+          plot.caption = element_text(colour = "#264653", size = 9),
+          panel.grid = element_blank(),
+          axis.text.x = element_text(size = 4, angle = 65,vjust = .8,
+                                     color = "grey50"),
+          axis.text.y = element_blank(),
+          plot.margin = margin(t = 1, 
+                               r = 1, 
+                               b = 1,
+                               l = 1, "cm")
+    )+
+    coord_cartesian(clip = "off")
+  
+  plot_spc_common
+  
+```
+
+## Assembling 
+
+```{r plot-assemble, fig.height=12, fig.width=10,echo=FALSE, warning=FALSE, message=FALSE, cache=TRUE }
+plot_map+inset_element(plot_spc_common,
+                        right = 1, 
+                       left = 0,
+                       bottom = -.6, 
+                       top = 0,
+                       align_to = 'panel')&theme(plot.background = element_rect(fill = "#F5F2F3"))
+
+
+```
+
