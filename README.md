@@ -4,9 +4,11 @@
 
 # 
 
-Repository including code from all personal contributions to the challenge.
+**CODE** **REPOSITORY** of all personal contributions to the challenge.
 
-Be careful when running my scripts. Some of them take a little time and others didn't have
+Be careful when running my scripts, most of them were made in less than 24 hrs. Questions, criticism, and opinions are more than welcome. :mate:
+
+  
 
 ## Day one: Points
 
