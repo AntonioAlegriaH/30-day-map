@@ -47,3 +47,19 @@ Tip: I recommend using jobs for nyc street data.
 ## Day 23: Movement
 
 [![](1-scripts/day-23-movement/day23-movement.gif "CDMX Metro")](https://github.com/AntonioAlegriaH/30-day-map/blob/main/1-scripts/day-23-movement/1-movement.R)
+
+## Day 25: Two Colors
+
+![](1-scripts/day-25-two-colors/Edinburgh-cycle.png "Edinburgh cycle network")
+
+## Day 29: Out of My Comfort Zone
+
+Annotations where not made in R xd
+
+![](1-scripts/day-29-Out/day29-out.png "Barcelona rayshader")
+
+## Day 30: Remix
+
+Same here: Annotations where not made in R.
+
+![](1-scripts/day-31-remix/day30-remix.png "Germany population density")
