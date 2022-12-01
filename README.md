@@ -33,3 +33,17 @@ If you increase the alpha value it may be a useful map. Or click here to see my 
 [American Migration Patterns During Covid19](https://antonioalegria.io/posts/2022/08/american-migration-during-covid19/)
 
 [![](1-scripts/day-10-bad-map/day10-badmap.png "American migration patterns")](https://github.com/AntonioAlegriaH/30-day-map/blob/main/1-scripts/day-10-bad-map/1-day10%20bad%20map.Rmd)
+
+## Day 16: Minimal
+
+![](1-scripts/day-16-minimal/dc_metro_5.png "DC Metro Lines")
+
+## Day 18: Blue 
+
+Tip: I recommend using jobs for nyc street data.
+
+![](1-scripts/day-18-blue/blue-sea-level_final.png "NYC Sea level")
+
+## Day 23: Movement
+
+![](1-scripts/day-23-movement/day23-movement.gif "CDMX Metro")
