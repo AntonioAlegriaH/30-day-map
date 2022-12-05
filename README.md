@@ -8,8 +8,6 @@
 
 Be careful when running my scripts, most of them were made in less than 24 hrs. Questions, criticism, and opinions are more than welcome. :mate:
 
-  
-
 ## Day one: Points
 
 [![](1-scripts/day-1-points/plot-assemble-1.png "NYC Trees")](https://github.com/AntonioAlegriaH/30-day-map/blob/main/1-scripts/day-1-points/1-points_1.Rmd)
@@ -40,7 +38,7 @@ If you increase the alpha value it may be a useful map. Or click here to see my 
 
 [![](1-scripts/day-16-minimal/dc_metro_5.png "DC Metro Lines")](https://github.com/AntonioAlegriaH/30-day-map/blob/main/1-scripts/day-16-minimal/washigton_metro_lines.R)
 
-## Day 18: Blue 
+## Day 18: Blue
 
 Tip: I recommend using jobs for nyc street data.
 
