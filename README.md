@@ -1,6 +1,6 @@
 # 2023 30 DAY MAP CHALLENGE
 
-<img src="resources/2023_30map-challenge.jpg" title="thumbnail 2023" width="1000"/>
+<img src="resources/2023_30map-challenge.jpg" title="thumbnail 2023" width="557"/>
 
 # 2022 30 Day Map Challenge 
 
