@@ -4,6 +4,8 @@
 
 ## **Day 1: Points**
 
+![](2023_scripts/day-1-points/points-final.png)
+
 ------------------------------------------------------------------------
 
 # 2022 30 Day Map Challenge
