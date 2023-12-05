@@ -2,6 +2,10 @@
 
 ![](resources/2023_30map-challenge.png "thumbnail 2023")
 
+Unfortunately, this year I wasn't able to complete most of the challenge. Nevertheless, I enjoyed seeing other people's maps and the creativity of every project.
+
+Anyway, questions, criticism, and opinions are more than welcome. Until next year. :mate:
+
 ## **Day 1: Points**
 
 [![](2023_scripts/day-1-points/points-final.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2023_scripts/day-1-points/day1-wifi-access-points.R)
@@ -32,15 +36,15 @@
 
 ------------------------------------------------------------------------
 
-# 2022 30 Day Map Challenge
+# 2022 
 
 ![](resources/2022_30map-challenge.png "banner")
 
 # 
 
-**CODE** **REPOSITORY** of all personal contributions to the challenge.
+CODE REPOSITORY for all personal contributions to the challenge.
 
-Be careful when running my scripts, most of them were made in less than 24 hrs. Questions, criticism, and opinions are more than welcome. :mate:
+Please exercise caution when running my scripts; most of them were made in less than 24 hours. Questions, criticism, and opinions are more than welcome. :mate:
 
 ## Day one: Points
 
