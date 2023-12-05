@@ -14,6 +14,14 @@
 
 [![](2023_scripts/day-3-polygons/arboledas-caba.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2023_scripts/day-3-polygons/day3-caba-arbolado.R)
 
+## Day 8: Africa
+
+[![](2023_scripts/day-8-africa/aot-final.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2023_scripts/day-8-africa/day8-aot-africa.R)
+
+## Day 9 & 10: Hexagons and North America
+
+[![](2023_scripts/day-9-hex/dental-clinics-2.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2023_scripts/day-9-hex/day9-dental-clinics.R)
+
 ------------------------------------------------------------------------
 
 # 2022 30 Day Map Challenge
