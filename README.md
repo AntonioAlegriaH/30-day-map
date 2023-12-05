@@ -28,7 +28,7 @@
 
 ## Day 24: Black and White
 
-[![](2023_scripts/day-24-black-and-white/popo-izta-final.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2023_scripts/day-9-hex/day24-black-and-white.R)
+[![](2023_scripts/day-24-black-and-white/popo-izta-final.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2023_scripts/day-24-black-and-white/day24-black-and-white.R)
 
 ------------------------------------------------------------------------
 
