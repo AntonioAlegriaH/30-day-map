@@ -4,7 +4,15 @@
 
 ## **Day 1: Points**
 
-![](2023_scripts/day-1-points/points-final.png)
+[![](2023_scripts/day-1-points/points-final.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2023_scripts/day-1-points/day1-wifi-access-points.R)
+
+## **Day 2: Lines**
+
+[![](2023_scripts/day-2-lines/day2-lines-final.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2023_scripts/day-2-lines/day2-glasgow-subway-line.R)
+
+## Day 3: Polygons
+
+[![](2023_scripts/day-3-polygons/arboledas-caba.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2023_scripts/day-3-polygons/day3-caba-arbolado.R)
 
 ------------------------------------------------------------------------
 
