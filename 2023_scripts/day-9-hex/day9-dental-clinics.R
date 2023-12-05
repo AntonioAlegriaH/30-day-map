@@ -1,5 +1,5 @@
 
-# 1- Mexico toritllerias --------------------------------------------------
+# 1- Mexico Dental clinics --------------------------------------------------
 
 pacman::p_load(raster,
                geodata, 

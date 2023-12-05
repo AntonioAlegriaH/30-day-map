@@ -22,6 +22,14 @@
 
 [![](2023_scripts/day-9-hex/dental-clinics-2.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2023_scripts/day-9-hex/day9-dental-clinics.R)
 
+## Day 17: Flow
+
+[![](2023_scripts/day-17-flow/commuting_zones_final.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2023_scripts/day-17-flow/day17-commuting-zones.R)
+
+## Day 24: Black and White
+
+[![](2023_scripts/day-24-black-and-white/popo-izta-final.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2023_scripts/day-9-hex/day24-black-and-white.R)
+
 ------------------------------------------------------------------------
 
 # 2022 30 Day Map Challenge
