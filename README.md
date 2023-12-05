@@ -1,6 +1,6 @@
-# 2023 30 DAY MAP CHALLENGE
+# 2023 
 
-<img src="resources/2023_30map-challenge.jpg" title="thumbnail 2023" width="557"/>
+![](resources/2023_30map-challenge.png "thumbnail 2023")
 
 ## **Day 1: Points**
 
