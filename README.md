@@ -1,4 +1,4 @@
-# 2023 
+# 2023
 
 ![](resources/2023_30map-challenge.png "thumbnail 2023")
 
@@ -36,7 +36,7 @@ Anyway, questions, criticism, and opinions are more than welcome. Until next yea
 
 ------------------------------------------------------------------------
 
-# 2022 
+# 2022
 
 ![](resources/2022_30map-challenge.png "banner")
 
