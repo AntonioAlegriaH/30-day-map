@@ -1,6 +1,6 @@
 ## Challenges
-### | [2022](https://github.com/AntonioAlegriaH/30-day-map/#2022) | [2023](https://github.com/AntonioAlegriaH/30-day-map?tab=readme-ov-file#2023) |
 
+### \| [2022](https://github.com/AntonioAlegriaH/30-day-map/#2022) \| [2023](https://github.com/AntonioAlegriaH/30-day-map?tab=readme-ov-file#2023) \|
 
 # 2023
 
