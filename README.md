@@ -66,7 +66,7 @@ Careful when ploting with this one. It's a bit heavy.
 
 ## Day 10: Bad Map
 
-If you increase the alpha value it may be a useful map. Or click here to see my blog entry ->
+If you increase the alpha value it may be a useful map. Or click here to see my blog entry -\>
 
 [American Migration Patterns During Covid19](https://antonioalegria.io/posts/2022/08/american-migration-during-covid19/)
 
