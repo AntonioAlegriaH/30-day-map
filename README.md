@@ -2,6 +2,16 @@
 
 ### \| [2022](https://github.com/AntonioAlegriaH/30-day-map/#2022) \| [2023](https://github.com/AntonioAlegriaH/30-day-map?tab=readme-ov-file#2023) \|
 
+# 2024
+
+LET'S GO!
+
+## **Day 1: Points**
+
+[![](2024_scripts/day-1-points/day1.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2023_scripts/day-1-points/day1-points-registeredvoted.R)
+
+
+
 # 2023
 
 ![](resources/2023_30map-challenge.png "thumbnail 2023")
