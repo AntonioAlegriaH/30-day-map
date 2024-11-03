@@ -8,12 +8,18 @@ LET'S GO!
 
 ## **Day 1: Points**
 
-[![](2024_scripts/day1-points/day1.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2023_scripts/day-1-points/day1-points-registeredvoted.R)
+[![](2024_scripts/day1-points/day1.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2024_scripts/day-1-points/day1-points-registeredvoted.R)
 
 
 ## **Day 2: Lines**
 
-[![](2024_scripts/day2-lines/day2.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2023_scripts/day-2-lines/day2-nazca-lines.R)
+[![](2024_scripts/day2-lines/day2.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2024_scripts/day-2-lines/day2-nazca-lines.R)
+
+
+## **Day 3: Polygons**
+
+[![](2024_scripts/day3-polygons/pn-voter-registration-2.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2024_scripts/day-3-polygons/day3-polygons-pn-voter-reg.R)
+
 
 
 # 2023
