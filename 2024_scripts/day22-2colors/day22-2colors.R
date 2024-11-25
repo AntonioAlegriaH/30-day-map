@@ -12,9 +12,7 @@ pacman::p_load(
   install = FALSE
 )
 
-library(extrafont)
-font_import()
-loadfonts(device = "win")
+
 
 
 # 1-import data -----------------------------------------------------------
@@ -64,7 +62,7 @@ rtp_rutas <- read_sf(rtp_path) %>%
 rtp_stops <- read_sf(rtp_path_stops)
 
 # OSM LIMITS
-# Query OSM for administrative boundaries within the bounding box
+
 osm_query <- opq(bbox = st_bbox(rtp_rutas)) %>%
   add_osm_feature(key = "boundary",
                   value = "administrative") %>%
@@ -76,9 +74,9 @@ admin_boundaries <- osm_query$osm_multipolygons[-1, ]
 # 2- clean and prepare data -----------------------------------------------
 
 
-buffer_distance <- 20  # Buffer distance in meters (adjust as needed)
+buffer_distance <- 20  
 
-# Create a buffer around the RTP routes
+
 rtp_buffer <- st_buffer(rtp_rutas, dist = buffer_distance)
 
 
@@ -101,7 +99,7 @@ rm(manzanas_cdmx_raw)
 
 # 3-visualize (ggplot) ----------------------------------------------------
 
-# Unique por Alcaldías just for fun
+# Unique Alcaldías just for fun
 alcaldias <- unique(manzanas_cdmx_df$NOM_MUN)
 
 plots_list <- lapply(alcaldias, function(alcaldia) {
@@ -217,9 +215,9 @@ alcaldias_df <- manzanas_cdmx_df %>%
   as_tibble() %>%
   group_by(NOM_MUN) %>%
   summarise(
-    blocks_with_routes = sum(intersects == "yes"), # Count blocks with routes
-    blocks_total = n(),                           # Total number of blocks
-    .groups = "drop"                              # Ungroup the result
+    blocks_with_routes = sum(intersects == "yes"),
+    blocks_total = n(),                           
+    .groups = "drop"                              
   )
 
 
