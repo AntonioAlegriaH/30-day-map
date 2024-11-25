@@ -23,9 +23,11 @@ LET'S GO!
 
 ## **Day 4: Hexagons**
 
-[![](2024_scripts/day3-hexagons/day4-hex-registry.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2024_scripts/day4-hexagons/day4-hexagons.R)
+[![](2024_scripts/day4-hexagons/day4-hex-registry.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2024_scripts/day4-hexagons/day4-hexagons.R)
 
+## **Day 22: 2 Color**
 
+[![](2024_scripts/day22-2colors/day22-routes.png)](https://github.com/AntonioAlegriaH/30-day-map/blob/main/2024_scripts/day22-2colors/day22-2colors.R)
 
 # 2023
 
